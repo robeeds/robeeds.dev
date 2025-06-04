@@ -1,92 +1,52 @@
-import { ArrowUpRight } from 'lucide-react'
+'use client'
+import React from 'react'
 
-// TODO: Change input source to admin ui
+import type { Page } from '@/payload-types'
 
-import { Button } from '@/components/ui/button'
+import { CMSLink } from '@/components/Link'
+import { Media } from '@/components/Media'
+import RichText from '@/components/RichText'
 
-interface HorizontalHeroProps {
-  heading?: string
-  subheading?: string
-  description?: string
-  image?: {
-    src: string
-    alt: string
-  }
-  buttons?: {
-    primary?: {
-      text: string
-      url: string
-    }
-    secondary?: {
-      text: string
-      url: string
-    }
-  }
-}
-
-const HorizontalHero = ({
-  heading = 'Epic Blocks',
-  subheading = ' built with shadcn/ui & Tailwind',
-  description = 'Finely crafted components built with React, Tailwind and Shadcn UI. Developers can copy and paste these blocks directly into their project.',
-  buttons = {
-    primary: {
-      text: 'Get Started',
-      url: '#',
-    },
-    secondary: {
-      text: 'Read the docs',
-      url: '#',
-    },
-  },
-  image = {
-    src: '/media/placeholder-dark-7-tall.svg',
-    alt: 'Placeholder',
-  },
-}: HorizontalHeroProps) => {
+export const HorizontalHero: React.FC<Page['hero']> = ({ links, media, richText }) => {
   return (
-    <section className="bg-background py-20 lg:py-32">
+    <section className="bg-background py-20">
       <div className="container flex flex-col items-center gap-10 lg:my-0 lg:flex-row">
+        {/* The section below is the main text */}
         <div className="flex flex-col gap-7 lg:w-2/3">
-          <h2 className="text-5xl font-semibold text-foreground md:text-5xl lg:text-8xl">
-            <span>{heading}</span>
-            <span className="text-muted-foreground">{subheading}</span>
-          </h2>
-          <p className="text-base text-muted-foreground md:text-lg lg:text-xl">{description}</p>
-          <div className="flex flex-wrap items-start gap-5 lg:gap-7">
-            <Button asChild>
-              <a href={buttons.primary?.url}>
-                <div className="flex items-center gap-2">
-                  <ArrowUpRight className="size-4" />
-                </div>
-                <span className="pr-6 pl-4 text-sm whitespace-nowrap lg:pr-8 lg:pl-6 lg:text-base">
-                  {buttons.primary?.text}
-                </span>
-              </a>
-            </Button>
-            <Button asChild variant="link" className="underline">
-              <a href={buttons.secondary?.url}>{buttons.secondary?.text}</a>
-            </Button>
+          <div>{richText && <RichText className="" data={richText} enableGutter={false} />}</div>
+          <div className="flex items-start gap-5 lg:gap-7">
+            {Array.isArray(links) && links.length > 0 && (
+              <ul className="flex items-center gap-2">
+                {links.map(({ link }, i) => {
+                  return (
+                    <li key={i}>
+                      <CMSLink {...link} />
+                    </li>
+                  )
+                })}
+              </ul>
+            )}
           </div>
         </div>
-        <div className="relative z-10">
-          <div className="absolute top-2.5 left-1/2 h-[92%] w-[69%] -translate-x-[52%] overflow-hidden rounded-[35px]">
-            <img
-              src={image.src}
-              alt={image.alt}
-              className="size-full object-cover object-[50%_0%]"
-            />
-          </div>
-          <img
-            className="relative z-10"
-            src="/media/phone-2.png"
-            width={450}
-            height={889}
-            alt="iphone"
-          />
+        {/* The section below is the image */}
+        <div className="relative z-10 lg:w-1/2 ">
+          {media && typeof media === 'object' && (
+            <div>
+              <Media
+                className=""
+                imgClassName="object-cover rounded-[10px]"
+                priority
+                resource={media}
+              />
+              {media?.caption && (
+                <div className="mt-3">
+                  <RichText data={media.caption} enableGutter={false} />
+                </div>
+              )}
+            </div>
+          )}
         </div>
       </div>
     </section>
   )
 }
-
-export { HorizontalHero }
