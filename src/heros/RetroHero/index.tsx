@@ -29,7 +29,7 @@ export const RetroHero: React.FC<Page['hero']> = ({ links, richText }) => {
             )}
           </div>
         </div>
-        <RetroGrid angle={70} opacity={0.85} className="z-0" />
+        <RetroGrid angle={80} className="z-0" />
       </div>
     </section>
   )
