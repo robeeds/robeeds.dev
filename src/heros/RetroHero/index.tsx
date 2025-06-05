@@ -9,7 +9,7 @@ import { RetroGrid } from '@/components/magicui/retro-grid'
 
 export const RetroHero: React.FC<Page['hero']> = ({ links, richText }) => {
   return (
-    <section className="bg-background py-20">
+    <section className="bg-background pt-[20vh] pb-[35vh] flex items-center">
       <div className="container flex flex-col items-center justify-center gap-10 lg:my-0 lg:flex-row">
         <div className="z-10 flex flex-col gap-7 justify-center items-center text-center lg:w-2/3">
           {/* Main Text */}
@@ -29,7 +29,7 @@ export const RetroHero: React.FC<Page['hero']> = ({ links, richText }) => {
             )}
           </div>
         </div>
-        <RetroGrid angle={70} className="z-0" />
+        <RetroGrid angle={70} opacity={0.85} className="z-0" />
       </div>
     </section>
   )
