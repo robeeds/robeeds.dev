@@ -39,6 +39,10 @@ export const hero: Field = {
           label: 'Horizontal',
           value: 'horizontal',
         },
+        {
+          label: 'Retro Hero',
+          value: 'retroHero',
+        },
       ],
       required: true,
     },
