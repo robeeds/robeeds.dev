@@ -22,6 +22,7 @@ import {
   PreviewField,
 } from '@payloadcms/plugin-seo/fields'
 import { MarqueeBlock } from '@/blocks/MarqueeBlock/config'
+import { LargeCallToAction } from '@/blocks/LargeCallToAction/config'
 
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
@@ -77,7 +78,7 @@ export const Pages: CollectionConfig<'pages'> = {
             {
               name: 'layout',
               type: 'blocks',
-              blocks: [CallToAction, Content, MediaBlock, Archive, FormBlock, MarqueeBlock, ContentWithMedia],
+              blocks: [CallToAction, Content, MediaBlock, Archive, FormBlock, MarqueeBlock, ContentWithMedia, LargeCallToAction],
               required: true,
               admin: {
                 initCollapsed: true,
