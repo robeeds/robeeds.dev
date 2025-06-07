@@ -10,6 +10,7 @@ import { MediaBlock } from '@/blocks/MediaBlock/Component'
 import { MarqueeBlock } from './MarqueeBlock/Component'
 import { ContentWithMediaBlock } from './ContentWithMedia/Component'
 import { LargeCallToActionBlock } from './LargeCallToAction/Component'
+import { FeaturesBlock } from './FeaturesBlock/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -20,6 +21,7 @@ const blockComponents = {
   marqueeBlock: MarqueeBlock,
   contentWithMedia: ContentWithMediaBlock,
   largeCTA: LargeCallToActionBlock,
+  feature: FeaturesBlock,
 }
 
 export const RenderBlocks: React.FC<{
