@@ -14,7 +14,9 @@ export const MarqueeBlock: React.FC<Props> = (props) => {
   const { richText, marqueeItems, staticImage } = props
   return (
     <section className="grid container gap-y-8">
-      <div>{richText && <RichText data={richText} enableGutter={false} />}</div>
+      <div className="flex justify-center">
+        {richText && <RichText data={richText} enableGutter={false} />}
+      </div>
       <Marquee className="w-full overflow-hidden">
         {marqueeItems?.map(({ media }, idx) => (
           <div key={idx} className="mx-4 shrink-0">

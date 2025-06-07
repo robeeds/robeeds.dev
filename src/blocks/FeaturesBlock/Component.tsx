@@ -24,8 +24,8 @@ export const FeaturesBlock: React.FC<Props> = (props) => {
   }
 
   return (
-    <div className="container my-16">
-      {title && <RichText className="pb-16" data={title} enableGutter={false} />}
+    <div className="container py-16">
+      {title && <RichText className="pb-8" data={title} enableGutter={false} />}
       <div className="flex flex-col gap-16">
         {rows &&
           rows.length > 0 &&
@@ -69,11 +69,16 @@ export const FeaturesBlock: React.FC<Props> = (props) => {
                 {/* This is the image portion */}
                 {(media || staticImage) && (
                   <div
-                    className={cn(`items-center col-span-4 lg:col-span-${imageSpan}`, {
+                    className={cn(` col-span-4 lg:col-span-${imageSpan}`, {
                       'md:col-span-4': textWidth !== 'full',
                     })}
                   >
-                    <Media resource={media} src={staticImage} imgClassName="rounded-[10px]" />
+                    <Media
+                      resource={media}
+                      src={staticImage}
+                      className="flex items-center justify-center"
+                      imgClassName="rounded-[10px]"
+                    />
                   </div>
                 )}
               </div>
