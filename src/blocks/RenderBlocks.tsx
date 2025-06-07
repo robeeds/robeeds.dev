@@ -11,6 +11,7 @@ import { MarqueeBlock } from './MarqueeBlock/Component'
 import { ContentWithMediaBlock } from './ContentWithMedia/Component'
 import { LargeCallToActionBlock } from './LargeCallToAction/Component'
 import { FeaturesBlock } from './FeaturesBlock/Component'
+import { TimelineBlock } from './Timeline/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -22,6 +23,7 @@ const blockComponents = {
   contentWithMedia: ContentWithMediaBlock,
   largeCTA: LargeCallToActionBlock,
   feature: FeaturesBlock,
+  timeline: TimelineBlock,
 }
 
 export const RenderBlocks: React.FC<{
