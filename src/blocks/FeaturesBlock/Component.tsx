@@ -24,7 +24,7 @@ export const FeaturesBlock: React.FC<Props> = (props) => {
   }
 
   return (
-    <div className="container py-16">
+    <div className="container py-32">
       {title && <RichText className="pb-8" data={title} enableGutter={false} />}
       <div className="flex flex-col gap-16">
         {rows &&
