@@ -7,6 +7,7 @@ import configPromise from '@payload-config'
 import { getPayload } from 'payload'
 import React from 'react'
 import PageClient from './page.client'
+import { mergeOpenGraph } from '@/utilities/mergeOpenGraph'
 
 export const dynamic = 'force-static'
 export const revalidate = 600
@@ -58,6 +59,10 @@ export default async function Page() {
 
 export function generateMetadata(): Metadata {
   return {
-    title: `Payload Website Template Posts`,
+    openGraph: mergeOpenGraph({
+      title: `Posts | robeeds.dev`,
+      description: `Here you'll see recent posts from my blog. This will include case studies, writeups for CTFs, articles on homelabbing, and many other things I find captivating`,
+      siteName: 'https://www.robeeds.dev/posts',
+    }),
   }
 }
