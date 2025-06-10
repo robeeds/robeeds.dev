@@ -8,7 +8,7 @@ import { TimelineBlock as TimelineBlockProps } from '@/payload-types'
 export const TimelineBlock: React.FC<TimelineBlockProps> = (props) => {
   const { title, timelineData } = props
   return (
-    <section className="bg-background py-32">
+    <section className="bg-background pt-32">
       <div className="container">
         <div className="text-center">
           {title && <RichText className="pb-4" data={title} enableGutter={false} />}
