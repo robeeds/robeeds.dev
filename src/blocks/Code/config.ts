@@ -21,6 +21,14 @@ export const Code: Block = {
           label: 'CSS',
           value: 'css',
         },
+        {
+          label: 'Shell',
+          value: 'shell'
+        },
+        {
+          label: 'Markdown',
+          value: 'markdown'
+        }
       ],
     },
     {
