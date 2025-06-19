@@ -76,5 +76,8 @@ export const Media: CollectionConfig = {
         crop: 'center',
       },
     ],
+    formatOptions: {
+      format: 'webp',
+    }
   },
 }
