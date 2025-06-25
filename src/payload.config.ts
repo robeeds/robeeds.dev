@@ -2,6 +2,9 @@
 import { s3Storage } from '@payloadcms/storage-s3'
 import { postgresAdapter } from '@payloadcms/db-postgres'
 
+// email-adapter-import
+import { resendAdapter } from '@payloadcms/email-resend'
+
 import sharp from 'sharp' // sharp-import
 import path from 'path'
 import { buildConfig, PayloadRequest } from 'payload'
@@ -113,4 +116,9 @@ export default buildConfig({
     },
     tasks: [],
   },
+  email: resendAdapter({
+    defaultFromAddress: 'contact@robeeds.dev',
+    defaultFromName: 'Robee D.',
+    apiKey: process.env.RESEND_API_KEY || '',
+  })
 })
