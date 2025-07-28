@@ -1,6 +1,6 @@
 const SITE_URL =
-  `https://${process.env.NEXT_PUBLIC_SERVER_URL}` ||
-  `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` ||
+  process.env.NEXT_PUBLIC_SERVER_URL ||
+  process.env.VERCEL_PROJECT_PRODUCTION_URL ||
   'https://www.robeeds.dev'
 
 /** @type {import('next-sitemap').IConfig} */
