@@ -15,6 +15,9 @@ import { generateMeta } from '@/utilities/generateMeta'
 import PageClient from './page.client'
 import { LivePreviewListener } from '@/components/LivePreviewListener'
 
+import { extractHeadings } from '@/utilities/extractHeadings'
+import TableOfContents from '@/components/TableOfContents/TableOfContents'
+
 export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise })
   const posts = await payload.find({
@@ -49,6 +52,8 @@ export default async function Post({ params: paramsPromise }: Args) {
 
   if (!post) return <PayloadRedirects url={url} />
 
+  const headings = extractHeadings(post.content)
+
   return (
     <article className="pt-16 pb-16">
       <PageClient />
@@ -60,9 +65,16 @@ export default async function Post({ params: paramsPromise }: Args) {
 
       <PostHero post={post} />
 
-      <div className="flex flex-col items-center gap-4 pt-8">
+      <div className="flex flex-col">
+        <div className="lg:grid lg:grid-cols-6 gap-4 pt-8">
+          <div className="container col-span-1">
+            <TableOfContents headings={headings} />
+          </div>
+          <div className="container col-start-2 col-end-6">
+            <RichText className="max-w-[48rem] mx-auto" data={post.content} enableGutter={false} />
+          </div>
+        </div>
         <div className="container">
-          <RichText className="max-w-[48rem] mx-auto" data={post.content} enableGutter={false} />
           {post.relatedPosts && post.relatedPosts.length > 0 && (
             <RelatedPosts
               className="mt-12 max-w-[52rem] lg:grid lg:grid-cols-subgrid col-start-1 col-span-3 grid-rows-[2fr]"
