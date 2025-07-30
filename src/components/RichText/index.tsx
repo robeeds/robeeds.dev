@@ -53,6 +53,24 @@ const jsxConverters: JSXConvertersFunction<NodeTypes> = ({ defaultConverters }) 
     code: ({ node }) => <CodeBlock className="col-start-2" {...node.fields} />,
     cta: ({ node }) => <CallToActionBlock {...node.fields} />,
   },
+  // Creating a Heading Converter
+  heading: ({ node, nodesToJSX }) => {
+    const Tag = node.tag
+    const children = nodesToJSX({ nodes: node.children })
+    const plainText =
+      node.children
+        ?.filter((c: any) => typeof c.text === 'string')
+        .map((c: any) => c.text)
+        .join('') ?? ''
+
+    const id = plainText
+      .trimEnd()
+      .toLowerCase()
+      .replace(/\s+/g, '-')
+      .replace(/[^\w-]/g, '')
+
+    return <Tag id={id}>{children}</Tag>
+  },
 })
 
 type Props = {
